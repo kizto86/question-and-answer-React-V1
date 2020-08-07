@@ -6,10 +6,17 @@ export default class CreateQuestion extends Component {
     super(props);
 
     this.state = {
+      name: "",
       title: "",
       description: "",
     };
   }
+
+  onChangeName = (e) => {
+    this.setState({
+      name: e.target.value,
+    });
+  };
 
   onChangeTitle = (e) => {
     this.setState({
@@ -23,10 +30,16 @@ export default class CreateQuestion extends Component {
     });
   };
 
+  /*onChange = (e) => {
+    this.setState({ [e.target.title]: e.target.value });
+    this.setState({ [e.target.description]: e.target.value });
+  };*/
+
   handleOnSubmit = (e) => {
     e.preventDefault();
 
     const question = {
+      name: this.state.name,
       title: this.state.title,
       description: this.state.description,
     };
@@ -34,7 +47,6 @@ export default class CreateQuestion extends Component {
       .post("http://localhost:3002/questions", question)
       .then((res) => console.log(res.data));
     window.location = "/";
-    this.setState("");
   };
 
   render() {
@@ -43,11 +55,25 @@ export default class CreateQuestion extends Component {
         <h3>Create new question</h3>
         <form onSubmit={this.handleOnSubmit}>
           <div className="form-group">
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              placeholder="Name"
+              className="form-control"
+              value={this.state.name}
+              onChange={this.onChangeName}
+            />
+          </div>
+          <div className="form-group">
             <label>Title:</label>
             <input
               type="text"
               name="title"
               id="title"
+              required
               placeholder="Title"
               className="form-control"
               value={this.state.title}
@@ -55,12 +81,14 @@ export default class CreateQuestion extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Question</label>
-            <input
-              type="text"
-              name="question"
-              id="question"
-              placeholder="Question"
+            <label>Description:</label>
+            <textarea
+              name="description"
+              id="description"
+              rows="5"
+              cols="5"
+              required
+              placeholder="Description"
               className="form-control"
               value={this.state.description}
               onChange={this.onChangeDescription}

@@ -1,13 +1,22 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Accordion, Card } from "react-bootstrap";
 import axios from "axios";
 
 const Question = (props) => (
-  <tr>
-    <td>{props.question._id}</td>
-    <td>{props.question.title}</td>
-    <td>{props.question.description}</td>
-  </tr>
+  <div>
+    <Accordion>
+      <Card>
+        <Card.Header>
+          <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+            {props.question.title}
+          </Accordion.Toggle>
+        </Card.Header>
+        <Accordion.Collapse eventKey="0">
+          <Card.Body>{props.question.description}</Card.Body>
+        </Accordion.Collapse>
+      </Card>
+    </Accordion>
+  </div>
 );
 
 export default class ListQuestions extends Component {
@@ -35,20 +44,6 @@ export default class ListQuestions extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <p>List of Questions</p>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Question</th>
-            </tr>
-          </thead>
-          <tbody>{this.questionList()}</tbody>
-        </table>
-      </div>
-    );
+    return <div>{this.questionList()}</div>;
   }
 }

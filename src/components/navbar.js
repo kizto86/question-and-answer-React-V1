@@ -22,11 +22,6 @@ export default class Navbar extends Component {
                 Create Question
               </Link>
             </li>
-            <li className="navbar-item">
-              <Link to="/answer/:id" className="nav-link">
-                Create Answer
-              </Link>
-            </li>
           </ul>
         </div>
       </nav>
