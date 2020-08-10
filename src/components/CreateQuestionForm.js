@@ -1,39 +1,27 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class CreateQuestion extends Component {
-  constructor(props) {
-    super(props);
+export default class CreateQuestionForm extends Component {
 
-    this.state = {
+
+    state = {
       name: "",
       title: "",
       description: "",
-    };
+
   }
 
-  onChangeName = (e) => {
-    this.setState({
-      name: e.target.value,
-    });
-  };
+  changeHandler = (e) => {
+      e.persist()
+      let value = e.target.value;
 
-  onChangeTitle = (e) => {
-    this.setState({
-      title: e.target.value,
-    });
-  };
+      this.setState(prevState =>({
+        ...prevState , [e.target.name]:value
+      }))
 
-  onChangeDescription = (e) => {
-    this.setState({
-      description: e.target.value,
-    });
-  };
 
-  /*onChange = (e) => {
-    this.setState({ [e.target.title]: e.target.value });
-    this.setState({ [e.target.description]: e.target.value });
-  };*/
+
+  };
 
   handleOnSubmit = (e) => {
     e.preventDefault();
@@ -64,7 +52,7 @@ export default class CreateQuestion extends Component {
               placeholder="Name"
               className="form-control"
               value={this.state.name}
-              onChange={this.onChangeName}
+              onChange={this.changeHandler}
             />
           </div>
           <div className="form-group">
@@ -77,7 +65,7 @@ export default class CreateQuestion extends Component {
               placeholder="Title"
               className="form-control"
               value={this.state.title}
-              onChange={this.onChangeTitle}
+              onChange={this.changeHandler}
             />
           </div>
           <div className="form-group">
@@ -91,7 +79,7 @@ export default class CreateQuestion extends Component {
               placeholder="Description"
               className="form-control"
               value={this.state.description}
-              onChange={this.onChangeDescription}
+              onChange={this.changeHandler}
             />
           </div>
           <div className="form-group">

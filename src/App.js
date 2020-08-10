@@ -3,8 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import CreateQuestion from "./components/CreateQuestion";
-import ListQuestions from "./components/ListQuestions";
+import CreateQuestionForm from "./components/CreateQuestionForm";
+import Questions from "./components/Questions";
 
 const App = () => {
   return (
@@ -12,8 +12,8 @@ const App = () => {
       <div className="container">
         <Navbar />
         <br />
-        <Route path="/" exact component={ListQuestions} />
-        <Route path="/create" component={CreateQuestion} />
+        <Route path="/" exact component={Questions} />
+        <Route path="/create-question" component={CreateQuestionForm} />
       </div>
     </Router>
   );
