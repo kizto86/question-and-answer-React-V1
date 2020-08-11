@@ -17,7 +17,7 @@ const { questionId } = useParams();
       .then((res) => console.log(res.data));
 
     console.log(answer)
-    window.location = "/";
+    //window.location = "/";
     setContent("")
   };
 

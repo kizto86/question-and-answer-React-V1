@@ -3,9 +3,9 @@ import axios from "axios";
 
 export default class CreateQuestionForm extends Component {
   state = {
-    name: "",
-    title: "",
-    description: "",
+    username: "",
+    question_title: "",
+    question_description: "",
   };
 
   changeHandler = (e) => {
@@ -22,9 +22,9 @@ export default class CreateQuestionForm extends Component {
     e.preventDefault();
 
     const question = {
-      name: this.state.name,
-      title: this.state.title,
-      description: this.state.description,
+      username: this.state.username,
+      question_title: this.state.question_title,
+      question_description: this.state.question_description,
     };
     axios
       .post("http://localhost:3002/questions", question)
@@ -41,12 +41,12 @@ export default class CreateQuestionForm extends Component {
             <label>Name:</label>
             <input
               type="text"
-              name="name"
-              id="name"
+              name="username"
+              id="username"
               required
               placeholder="Username"
               className="form-control"
-              value={this.state.name}
+              value={this.state.username}
               onChange={this.changeHandler}
             />
           </div>
@@ -54,26 +54,26 @@ export default class CreateQuestionForm extends Component {
             <label>Title:</label>
             <input
               type="text"
-              name="title"
-              id="title"
+              name="question_title"
+              id="question_title"
               required
               placeholder="Title of Question"
               className="form-control"
-              value={this.state.title}
+              value={this.state.question_title}
               onChange={this.changeHandler}
             />
           </div>
           <div className="form-group">
             <label>Description:</label>
             <textarea
-              name="description"
-              id="description"
+              name="question_description"
+              id="question_description"
               rows="5"
               cols="5"
               required
               placeholder="Description of Question"
               className="form-control"
-              value={this.state.description}
+              value={this.state.question_description}
               onChange={this.changeHandler}
             />
           </div>
