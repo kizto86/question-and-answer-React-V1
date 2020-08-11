@@ -5,6 +5,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import CreateQuestionForm from "./components/CreateQuestionForm";
 import Questions from "./components/Questions";
+import CreateAnswerForm from "./components/CreateAnswerForm";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <br />
         <Route path="/" exact component={Questions} />
         <Route path="/create-question" component={CreateQuestionForm} />
+        <Route path="/create-answer-to/:questionId" component={CreateAnswerForm} />
       </div>
     </Router>
   );

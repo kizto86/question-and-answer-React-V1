@@ -1,6 +1,6 @@
 import React from "react";
-
 import { Accordion, Card } from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 const DisplayQuestion = (props) => (
   <div>
@@ -12,10 +12,16 @@ const DisplayQuestion = (props) => (
           </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
-          <Card.Body>{props.question.description}</Card.Body>
+          <Card.Body>
+            {props.question.description}
+            <Link to={"/create-answer-to/" + props.question._id} className="nav-link">Create answer</Link>
+            {props.answer}
+          </Card.Body>
         </Accordion.Collapse>
       </Card>
+
     </Accordion>
+
   </div>
 );
 

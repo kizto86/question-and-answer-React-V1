@@ -4,7 +4,7 @@ import axios from "axios";
 
 import DisplayQuestion from "./DisplayQuestion";
 
-export default class ListQuestions extends Component {
+export default class Questions extends Component {
   state = { questions: [] };
 
   componentDidMount() {

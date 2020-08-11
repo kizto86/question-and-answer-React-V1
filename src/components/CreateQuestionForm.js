@@ -2,25 +2,20 @@ import React, { Component } from "react";
 import axios from "axios";
 
 export default class CreateQuestionForm extends Component {
-
-
-    state = {
-      name: "",
-      title: "",
-      description: "",
-
-  }
+  state = {
+    name: "",
+    title: "",
+    description: "",
+  };
 
   changeHandler = (e) => {
-      e.persist()
-      let value = e.target.value;
+    e.persist();
+    let value = e.target.value;
 
-      this.setState(prevState =>({
-        ...prevState , [e.target.name]:value
-      }))
-
-
-
+    this.setState((prevState) => ({
+      ...prevState,
+      [e.target.name]: value,
+    }));
   };
 
   handleOnSubmit = (e) => {
@@ -49,7 +44,7 @@ export default class CreateQuestionForm extends Component {
               name="name"
               id="name"
               required
-              placeholder="Name"
+              placeholder="Username"
               className="form-control"
               value={this.state.name}
               onChange={this.changeHandler}
@@ -62,7 +57,7 @@ export default class CreateQuestionForm extends Component {
               name="title"
               id="title"
               required
-              placeholder="Title"
+              placeholder="Title of Question"
               className="form-control"
               value={this.state.title}
               onChange={this.changeHandler}
@@ -76,7 +71,7 @@ export default class CreateQuestionForm extends Component {
               rows="5"
               cols="5"
               required
-              placeholder="Description"
+              placeholder="Description of Question"
               className="form-control"
               value={this.state.description}
               onChange={this.changeHandler}
@@ -85,7 +80,7 @@ export default class CreateQuestionForm extends Component {
           <div className="form-group">
             <input
               type="submit"
-              value="Create question"
+              value="Submit Question"
               className="btn btn-primary"
             />
           </div>
