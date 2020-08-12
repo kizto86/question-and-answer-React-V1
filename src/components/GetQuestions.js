@@ -2,16 +2,18 @@ import React, { Component } from "react";
 
 import axios from "axios";
 
-import DisplayQuestion from "./DisplayQuestion";
+import DisplayQuestion from "./DisplayQuestions";
 
 export default class GetQuestions extends Component {
-  state = { questions: [], answers: [] };
+  state = {
+    questions: [],
+    answers: [],
+  };
 
   componentDidMount() {
     axios
       .get("http://localhost:3002/questions/")
       .then((response) => {
-        console.log(response.data);
         this.setState({ questions: response.data });
       })
       .catch((error) => {
@@ -20,11 +22,9 @@ export default class GetQuestions extends Component {
 
     const ans = this.state.questions;
     ans.forEach((question) => {
-      console.log(question._id);
       axios
         .get(`http://localhost:3002/questions/${question._id}/answers`)
         .then((response) => {
-          console.log(response.data);
           this.setState((state) => state.answers.push(response.data));
         })
 

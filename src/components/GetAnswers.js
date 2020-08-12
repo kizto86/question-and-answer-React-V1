@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 
 import axios from "axios";
 
-import DisplayAnswer from "./DisplayAnswer";
+import DisplayAnswer from "./DisplayAnswers";
 
 class GetAnswers extends Component {
   state = { data: {} };
@@ -13,7 +13,6 @@ class GetAnswers extends Component {
     axios
       .get(`http://localhost:3002/questions/${questionId}/answers`)
       .then((response) => {
-        console.log(response.data);
         this.setState({
           data: response.data,
         });

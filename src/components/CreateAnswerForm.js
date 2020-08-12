@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const CreateAnswerForm = (props) => {
-const { questionId } = useParams();
+const CreateAnswerForm = () => {
+  const { questionId } = useParams();
   const [content, setContent] = useState("");
 
   const handleSubmit = (e) => {
@@ -15,16 +15,13 @@ const { questionId } = useParams();
     axios
       .post(`http://localhost:3002/questions/${questionId}/answer`, answer)
       .then((res) => console.log(res.data));
-
-    console.log(answer)
-    //window.location = "/";
-    setContent("")
+    window.location = "/";
+    setContent("");
   };
-
 
   return (
     <div>
-      <h3>Create a new question {questionId}</h3>
+      <h3>Create a new answer</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Answer:</label>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import GetAnswers from "./GetAnswers";
 
-const DisplayQuestion = (props) => (
+const DisplayQuestions = (props) => (
   <div>
     <Accordion>
       <Card>
@@ -30,4 +30,4 @@ const DisplayQuestion = (props) => (
   </div>
 );
 
-export default DisplayQuestion;
+export default DisplayQuestions;
