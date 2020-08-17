@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router";
+
 
 import axios from "axios";
 
@@ -40,4 +40,4 @@ class GetAnswers extends Component {
   }
 }
 
-export default withRouter(GetAnswers);
+export default GetAnswers;
