@@ -1,8 +1,9 @@
 import React from "react";
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import CreateQuestionForm from "./components/CreateQuestionForm";
 import CreateAnswerForm from "./components/CreateAnswerForm";
-import { useParams } from "react-router-dom";
 
 afterEach(cleanup);
 describe("Question Form", () => {
@@ -24,13 +25,19 @@ describe("Question Form", () => {
   });
 });
 
-/*describe("Answer Form", () => {
-  //const { questionId } = useParams();
+describe("Answer Form", () => {
   it("Ensures that  the correct content is rendered", () => {
-    const { getByText, getByLabelText } = render(<CreateAnswerForm />);
+    const history = createMemoryHistory();
+    const route = "/create-answer-to/:questionId";
+    history.push(route);
+    const { getByText, getByLabelText } = render(
+      <Router history={history}>
+        <CreateAnswerForm />
+      </Router>
+    );
 
     expect(getByText(/Create a new answer/i)).not.toBeNull();
     expect(getByLabelText(/Answer/i)).not.toBeNull();
     expect(getByText(/Submit Answer/i)).not.toBeNull();
   });
-});*/
+});

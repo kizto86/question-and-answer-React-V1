@@ -10,7 +10,7 @@ const CreateAnswerForm = () => {
     e.preventDefault();
     const answer = {
       content: content,
-      //question: questionId,
+      question: questionId,
     };
     axios
       .post(`http://localhost:3002/questions/${questionId}/answer`, answer)
@@ -24,7 +24,7 @@ const CreateAnswerForm = () => {
       <h3>Create a new answer</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Answer:</label>
+          <label htmlFor="answer">Answer:</label>
           <textarea
             name="answer"
             id="answer"
