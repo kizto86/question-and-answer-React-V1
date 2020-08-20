@@ -36,9 +36,9 @@ export default class CreateQuestionForm extends Component {
     return (
       <div>
         <h3>Create new question</h3>
-        <form onSubmit={this.handleOnSubmit}>
+        <form data-testid="form" onSubmit={this.handleOnSubmit}>
           <div className="form-group">
-            <label>Name:</label>
+            <label htmlFor="username">Name:</label>
             <input
               type="text"
               name="username"
@@ -51,7 +51,7 @@ export default class CreateQuestionForm extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Title:</label>
+            <label htmlFor="question_title">Title:</label>
             <input
               type="text"
               name="question_title"
@@ -64,7 +64,7 @@ export default class CreateQuestionForm extends Component {
             />
           </div>
           <div className="form-group">
-            <label>Description:</label>
+            <label htmlFor="question_description">Description:</label>
             <textarea
               name="question_description"
               id="question_description"

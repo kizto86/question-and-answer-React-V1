@@ -10,7 +10,7 @@ const CreateAnswerForm = () => {
     e.preventDefault();
     const answer = {
       content: content,
-      question: questionId,
+      //question: questionId,
     };
     axios
       .post(`http://localhost:3002/questions/${questionId}/answer`, answer)
