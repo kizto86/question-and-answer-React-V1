@@ -23,7 +23,9 @@ export default class GetQuestions extends Component {
     return (
       <div>
         {this.state.questions.map((question) => (
-          <DisplayQuestion question={question} key={question._id} />
+          <div>
+            <DisplayQuestion question={question} key={question._id} />
+          </div>
         ))}
       </div>
     );

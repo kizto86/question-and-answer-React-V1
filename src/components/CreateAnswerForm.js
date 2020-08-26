@@ -38,15 +38,13 @@ const CreateAnswerForm = () => {
           />
         </div>
         <div className="form-group">
-          <input
-            type="submit"
-            value="Submit Answer"
-            className="btn btn-primary"
-          />
+         <button type="submit" className="btn btn-primary" value="Submit Answer">Submit Answer</button>
         </div>
       </form>
     </div>
   );
 };
+
+
 
 export default CreateAnswerForm;

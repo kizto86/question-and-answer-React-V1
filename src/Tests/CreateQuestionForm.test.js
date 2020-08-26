@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react";
-import CreateQuestionForm from "./components/CreateQuestionForm";
+import CreateQuestionForm from "../components/CreateQuestionForm";
 
 afterEach(cleanup);
 
@@ -36,5 +36,12 @@ describe("Question Form", () => {
       target: { value: "Text" },
     });
     expect(getByText(/Description/i).textContent).not.toBe("Description: ");
+  });
+
+  it("submits", () => {
+    const OnSubmit = jest.fn();
+    const { getByTestId } = render(<CreateQuestionForm onSubmit={OnSubmit} />);
+    fireEvent.submit(getByTestId("form"));
+    expect(OnSubmit).toHaveBeenCalled();
   });
 });

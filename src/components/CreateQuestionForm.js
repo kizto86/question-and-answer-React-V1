@@ -18,7 +18,7 @@ export default class CreateQuestionForm extends Component {
     }));
   };
 
-  handleOnSubmit = (e) => {
+  OnSubmit = (e) => {
     e.preventDefault();
 
     const question = {
@@ -36,7 +36,7 @@ export default class CreateQuestionForm extends Component {
     return (
       <div>
         <h3>Create new question</h3>
-        <form data-testid="form" onSubmit={this.handleOnSubmit}>
+        <form data-testid="form" onSubmit={this.OnSubmit}>
           <div className="form-group">
             <label htmlFor="username">Name:</label>
             <input
@@ -78,11 +78,13 @@ export default class CreateQuestionForm extends Component {
             />
           </div>
           <div className="form-group">
-            <input
+            <button
               type="submit"
-              value="Submit Question"
               className="btn btn-primary"
-            />
+              value="Submit Question"
+            >
+              Submit Question
+            </button>
           </div>
         </form>
       </div>
