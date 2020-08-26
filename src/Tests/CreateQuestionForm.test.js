@@ -5,7 +5,7 @@ import CreateQuestionForm from "../components/CreateQuestionForm";
 afterEach(cleanup);
 
 describe("Question Form", () => {
-  it("Renders <CreateQuestionForm/> component correctly", () => {
+  it("renders the component correctly", () => {
     const { getByText, getByLabelText } = render(<CreateQuestionForm />);
 
     expect(getByText(/Create new question/i)).not.toBeNull();

@@ -13,6 +13,7 @@ export default class GetQuestions extends Component {
     axios
       .get("http://localhost:3002/questions/")
       .then((response) => {
+        console.log(response.log);
         this.setState({ questions: response.data });
       })
       .catch((error) => {

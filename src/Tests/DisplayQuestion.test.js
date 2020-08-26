@@ -22,19 +22,23 @@ const question = {
   question_description: "test",
 };
 
-it("renders with or without a prop", () => {
-  act(() => {
-    render(<DisplayQuestions />, container);
+describe("Display Question", () => {
+  it("renders without a prop", () => {
+    act(() => {
+      render(<DisplayQuestions />, container);
+    });
+    expect(container.textContent).toBe("No question specified.");
   });
-  expect(container.textContent).toBe("No question specified.");
 
-  act(() => {
-    render(
-      <Router>
-        <DisplayQuestions question={question} />
-      </Router>,
-      container
-    );
+  it("renders the prop passed to it", () => {
+    act(() => {
+      render(
+        <Router>
+          <DisplayQuestions question={question} />
+        </Router>,
+        container
+      );
+    });
+    expect(container.textContent).toBe("testtestCreate answer");
   });
-  expect(container.textContent).toBe("testtestCreate answer");
 });

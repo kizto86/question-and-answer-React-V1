@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 
-
 import axios from "axios";
 
-import DisplayAnswer from "./DisplayAnswers";
+import DisplayAnswers from "./DisplayAnswers";
 
 class GetAnswers extends Component {
   state = { data: {} };
@@ -25,16 +24,16 @@ class GetAnswers extends Component {
 
   render() {
     const length =
-      this.state.data.answers !== undefined
-        ? this.state.data.answers.length
-        : 0;
+        this.state.data.answers !== undefined
+            ? this.state.data.answers.length
+            : 0;
     if (length > 0) {
       return (
-        <div>
-          {this.state.data.answers.map((answer) => (
-            <DisplayAnswer answer={answer} key={answer._id} />
-          ))}
-        </div>
+          <div>
+            {this.state.data.answers.map((answer) => (
+                <DisplayAnswers answer={answer} key={answer._id} />
+            ))}
+          </div>
       );
     } else return <p></p>;
   }
