@@ -10,7 +10,7 @@ export default class CreateQuestionForm extends Component {
 
   changeHandler = (e) => {
     e.persist();
-    let value = e.target.value;
+    const value = e.target.value;
 
     this.setState((prevState) => ({
       ...prevState,
@@ -18,7 +18,12 @@ export default class CreateQuestionForm extends Component {
     }));
   };
 
-  OnSubmit = (e) => {
+  onSubmit = (e) => {
+    if (this.props.onSubmit) {
+      this.props.onSubmit();
+    } else {
+    }
+
     e.preventDefault();
 
     const question = {
@@ -29,14 +34,14 @@ export default class CreateQuestionForm extends Component {
     axios
       .post("http://localhost:3002/questions", question)
       .then((res) => console.log(res.data));
-    window.location = "/";
+       window.location = "/"
   };
 
   render() {
     return (
       <div>
         <h3>Create new question</h3>
-        <form data-testid="form" onSubmit={this.OnSubmit}>
+        <form data-testid="form" onSubmit={this.onSubmit}>
           <div className="form-group">
             <label htmlFor="username">Name:</label>
             <input

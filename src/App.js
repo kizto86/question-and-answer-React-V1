@@ -1,27 +1,62 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Nav from "./components/Nav";
 import CreateQuestionForm from "./components/CreateQuestionForm";
-import GetQuestions from "./components/GetQuestions";
+import Questions from "./components/Questions";
 import CreateAnswerForm from "./components/CreateAnswerForm";
 
-const App = () => {
-  return (
-    <Router>
-      <div className="container">
-        <Navbar />
-        <br />
-        <Route path="/" exact component={GetQuestions} />
-        <Route path="/create-question" component={CreateQuestionForm} />
-        <Route
-          path="/create-answer-to/:questionId"
-          component={CreateAnswerForm}
-        />
-      </div>
-    </Router>
-  );
-};
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      questions: [],
+    };
+  }
+
+  componentDidMount() {
+    this.getQuestions();
+  }
+
+  //Fetch the questions
+  getQuestions() {
+    axios
+      .get("http://localhost:3002/questions/")
+      .then((response) => {
+        console.log(response.data);
+        this.setState({ questions: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  render() {
+    const { questions } = this.state;
+    return (
+      <Router>
+        <div className="container">
+          <Nav />
+          <br />
+          <Route
+            path="/"
+            exact
+            render={() => <Questions questions={questions} />}
+          />
+          <Route
+            path="/create-question"
+            render={() => <CreateQuestionForm />}
+          />
+          <Route
+            path="/create-answer-to/:questionId"
+            component={CreateAnswerForm}
+          />
+        </div>
+        {/*<GetAnswers answers={answers} >*/}
+      </Router>
+    );
+  }
+}
 
 export default App;
